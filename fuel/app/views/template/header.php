@@ -1,0 +1,33 @@
+<div class="u-header--background">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+
+                <header class="header">
+                    <!--ハンバーガー divはグループ用-->
+                    <div>
+                        <a class="menu-trigger js-menu-trigger" href="#">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </a>
+
+                        <a href="top.html"><?php echo Asset::img('cooltext319025709534131.png',array('alt'=>'タイトル','class'=>'header--img')); ?> </a>
+                    </div>
+                    <!--検索-->
+                    <form action="" method="get" class="p-search--container">
+                        <input type="text" name="search" class="p-search--container__text" placeholder="検索">
+                        <button type="submit" value="検索" class="p-search--container__btn"><i class="fas fa-search"></i>
+                        </button>
+                    </form>
+                    <nav class="c-nav">
+                        <ul class="c-nav__menu">
+                            <li class="c-nav__menu--item"><a href="" class="c-nav__menu--link">マイページ</a></li>
+                            <li class="c-nav__menu--item"><a href="" class="c-nav__menu--link">ログアウト</a></li>
+                        </ul>
+                    </nav>
+                </header>
+            </div>
+        </div>
+    </div>
+</div>

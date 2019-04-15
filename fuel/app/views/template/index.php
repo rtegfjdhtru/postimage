@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <?php echo $head;?>
-</head>
-    <body>
+<html lang="ja">
 
+<?php echo $head; ?>
+<body>
+<?php echo $header; ?>
+<?php echo $sidemenu; ?>
 <?php echo $content; ?>
 <?php echo $footer; ?>
-    <?php echo $data; ?>
 </body>
 
 </html>
