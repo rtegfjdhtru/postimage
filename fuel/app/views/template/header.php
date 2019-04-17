@@ -12,7 +12,8 @@
                             <span></span>
                         </a>
 
-                        <a href="top.html"><?php echo Asset::img('cooltext319025709534131.png',array('alt'=>'タイトル','class'=>'header--img')); ?> </a>
+                        <?php echo Html::anchor('home/index',Asset::img('cooltext319025709534131.png',array('alt'=>'タイトル','class'=>'header--img'))); ?>
+
                     </div>
                     <!--検索-->
                     <form action="" method="get" class="p-search--container">
