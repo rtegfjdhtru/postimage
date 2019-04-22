@@ -7,10 +7,24 @@
             </div>
         </div>
 
+
         <!--input err で赤に-->
         <div class="row">
             <div class="col-sm-7 c-signup-form--center">
                 <form action="" method="post" class="c-signup-form">
+
+                    <?php if(!empty($error)): ?>
+
+                        <?php
+                        foreach ($error as $key => $val):
+                            ?>
+                            <li><?=$val?></li>
+                        <?php
+                        endforeach;
+                        ?>
+                    <?php
+                    endif;
+                    ?>
                     <label class="c-signup-form__label">Email
                         <input type="text" name="email" class="c-signup-form__text err">
                     </label>
@@ -19,7 +33,7 @@
                         <input type="password" name="pass" class="c-signup-form__text">
                     </label>
                     <label class="c-signup-form__label">パスワード再入力
-                        <input type="password" name="pass" class="c-signup-form__text">
+                        <input type="password" name="pass_re" class="c-signup-form__text">
                     </label>
                     <input type="submit" value="登録" class="btn btn-primary">
                 </form>

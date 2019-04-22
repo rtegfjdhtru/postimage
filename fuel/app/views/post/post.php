@@ -1,3 +1,12 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: kunotota
+ * Date: 2019-04-18
+ * Time: 01:35
+ */?>
+
+
 <main>
 
     <section class="u-bgColor-Lightgray u-content-padding">
@@ -5,8 +14,8 @@
             <div class="row">
                 <div class="col-sm-8 col-md-6">
                     <form action="" method="post" class="p-purof">
-                        <input type="text" name="name" placeholder="ニックネーム" class="p-purof__text">
-                        <input type="text" name="self--text" placeholder="自己紹介" class="p-purof__text">
+                        <input type="text" name="name" placeholder="タイトル" class="p-purof__text">
+                        <input type="text" name="self--text" placeholder="説明" class="p-purof__text">
                         <!-- 画像プレビュー-->
                         画像
                         <label class="p-purof__area" id="app1">
@@ -21,7 +30,7 @@
 
 
 
-                        <input type="submit" value="変更" class="btn btn-primary u-btn-width">
+                        <input type="submit" value="投稿" class="btn btn-primary u-btn-width">
                     </form>
 
                 </div>
