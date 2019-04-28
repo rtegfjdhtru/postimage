@@ -1,7 +1,13 @@
 <?php
-class Model_Post extends \Model_Crud{
-    //①テーブルの名前を登録する
-    protected static $_table_name = 'user';
-    //②テーブルの主キーを登録する
-    protected static $_primary_key = 'id';
+namespace Model;
+
+class Welcome extends \Model {
+
+    public static function get_results()
+    {
+//        DB::query('INSERT INTO user(email,password) VALUE (email,password)');
+        $query = DB::insert('user',array('email','password'));
+        $result =  $query->execute();
+    }
+
 }
