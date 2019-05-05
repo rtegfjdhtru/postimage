@@ -12,17 +12,24 @@
             <div class="col-sm-7 c-signup-form--center">
                 <form action="" method="post" class="c-signup-form">
                     <label class="c-signup-form__label">Email
-                        <input type="text" name="email" class="c-signup-form__text err">
+                        <input type="text" name="email" class="c-signup-form__text <?php if(!empty($error['email'])) echo 'err'; ?>"
+                        value="<?php if(!empty($error)) echo Input::post('email'); ?>">
                     </label>
-                    <p class="c-signup-form__text--err">メールアドレスの形式入力してください</p>
+                    <?php if(!empty($error['email'])) echo '<p class="c-signup-form__text--err">'.$error['email'].'</p>'; ?>
+
+
                     <label class="c-signup-form__label">パスワード
-                        <input type="password" name="pass" class="c-signup-form__text">
+                        <input type="password" name="password" class="c-signup-form__text  <?php if(!empty($error['password'])) echo 'err'; ?>">
                     </label>
                     <label>
-                        <p class="c-signup-form__text--err">メールアドレスの形式入力してください</p>
+                        <?php if(!empty($error['password'])) echo '<p class="c-signup-form__text--err">'.$error['password'].'</p>'; ?>
+
+
+
+
                         <input type="checkbox" name="pass_save">自動ログイン
                     </label>
-                    <a href="">パスワードをお忘れですか？</a>
+                    <?php echo Html::anchor('passreissue','パスワードをお忘れですか？'); ?>
                     <input type="submit" value="ログイン" class="btn btn-primary">
                 </form>
             </div>

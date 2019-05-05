@@ -9,7 +9,7 @@ class Controller_PassChange extends Controller_Template
         $this->template->head = view::forge('template/head');
         $this->template->header = view::forge('template/header');
         $this->template->sidemenu = view::forge('template/sidemenu');
-        $this->template->content = view::forge('passchange/passchange');
+        $this->template->content = view::forge('passreissue/passreissue');
         $this->template->footer = view::forge('template/footer');
 
         //テンプレートビューの中でさらに読み込んだビューの中にある変数へ値を渡したい場合はset_globalを使う。

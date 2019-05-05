@@ -12,8 +12,9 @@ return array(
     'max_length' => ':labelは:param:2文字以下で入力してください', //以上
     'match_field' => ':labelが合っていません',
     'valid_email' => 'Emailの形式で入力してください',
-    'valid_emails' =>'すでに登録されているEmailです',
-    'valid_form' => 'メールアドレスまたはパスワードが違います'
+    'valid_emails' =>'有効ではないEmailです',
+
+
 
 
 );

@@ -1,5 +1,5 @@
 <?php
-use \Model\Welcome;
+
 
 class Controller_SignUp extends Controller
 {
@@ -13,15 +13,22 @@ class Controller_SignUp extends Controller
 
 
         $error = '';
-        $formData = '';
+//        $formData = '';
 
         $val = Validation::forge('signup_form');
+        $val->add_callable('MyValidation');
+
+        $val->add('username', '名前')
+            ->add_rule('required');
 
         //バリデーション
+
         $val->add('email', 'Email')
             ->add_rule('required')
             ->add_rule('valid_email')
-            ->add_rule('valid_emails', 255);
+            ->add_rule('unique_email');
+        $val->set_message('unique_email', 'すでに登録されているメールアドレスです');
+
 
 //バリデーション
         $val->add('password', 'パスワード')
@@ -44,20 +51,19 @@ class Controller_SignUp extends Controller
                 $formData = $val->validated();
                 $auth = Auth::instance();
 
-
-                if ($auth->create_user($formData['password'],$formData['email'])) {
+                if ($auth->create_user($formData['username'], $formData['password'], $formData['email'])) {
                     //フラッシュメッセージ
-                    Session::set_flash('sucMsg', 'ユーザー登録が完了しました！');
+//                    Session::set_flash('sucMsg', 'ユーザー登録が完了しました！');
                     //リダイレクト
-                    Response::redirect('home/content');
+                    Response::redirect('home');
                 } else {
-                    Sesstion::set_flash('errMsg', '登録に失敗しました');
+//                    Sesstion::set_flash('errMsg', 'サーバーエラー');
                 }
             } else {
 
                 $error = $val->error();
 
-                Session::set_flash('errMsg', '登録に失敗しました');
+//                Session::set_flash('errMsg', '登録に失敗しました');
             }
             //フォームにpostした値をセット
 
@@ -71,10 +77,7 @@ class Controller_SignUp extends Controller
         $view->set('sidemenu', View::forge('template/sidemenu'));
         $view->set('content', View::forge('auth/signup'));
         $view->set('footer', View::forge('template/footer'));
-//        $view->set_global('signupform',$form->build(''),false);
         $view->set_global('error', $error);
-//        $view->set_global('formData',$formData);
-        $data = Welcome::get_results();
 
 
         return $view;

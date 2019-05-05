@@ -34,6 +34,8 @@ return array(
             'password' => 'root',
             'persistent' => FALSE,
         ),
+        'identifier' => '`',
+        'profiling'  => true,
         'table_prefix' => '',
         'charset' => 'utf8',
         'caching' => false,

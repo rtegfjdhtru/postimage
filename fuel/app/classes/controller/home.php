@@ -2,9 +2,15 @@
 
 class Controller_Home extends Controller_Template
 {
+
     public $template = 'template/index';
     public function action_index()
     {
+
+
+
+
+
         //変数としてビューを割り当てる
         $this->template->head = view::forge('template/head');
         $this->template->header = view::forge('template/header');

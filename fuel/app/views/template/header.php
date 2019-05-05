@@ -1,4 +1,29 @@
 <div class="u-header--background">
+    <?php
+    //変数にぶちこむ
+    $sucMsg = Session::get_flash('sucMsg');
+    //中身があったら表示
+    if(!empty($sucMsg)):
+        ?>
+        <div class="">
+            <?=$sucMsg?>
+        </div>
+    <?php
+    endif;
+
+    $errMsg = Session::get_flash('errMsg');
+    if(!empty($errMsg)):
+        ?>
+        <div class="" style="color:#fff;">
+            <?=$errMsg ?>
+        </div>
+    <?php
+    endif;
+    ?>
+<!--    <div class="" style="color:#fff;">-->
+<!--        aaaaa-->
+<!--    </div>-->
+
     <div class="container-fluid">
         <div class="row">
             <div class="col">
