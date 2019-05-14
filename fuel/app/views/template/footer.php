@@ -1,5 +1,5 @@
 
-<footer class="footer">
+<footer class="footer" id="footer">
     <div class="footer__padding">
         © Copyright All rights reserved.
     </div>
@@ -9,6 +9,7 @@
 
 
 
+<?php echo Asset::js('footerFixed.js','js'); ?>
 <?php echo Asset::js('jquery/dist/jquery.slim.min.js','js'); ?>
 <?php echo Asset::js('bootstrap/dist/js/bootstrap.min.js','js'); ?>
 <?php echo Asset::js('popper.js/dist/umd/popper.min.js','js'); ?>

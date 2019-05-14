@@ -1,14 +1,9 @@
 <?php
-namespace Model;
+//namespace Model;
 
-class Post extends \Model {
-
-    public static function get_results()
-    {
-//        DB::query('INSERT INTO user(email,password) VALUE (email,password)');
-        $query = DB::insert('users',array('email','password'))->execute();
-//        $result =  $query->execute();
-        return $query;
-    }
-
-}
+//class Model_Post extends \Model_Crud{
+//    //①テーブルの名前を登録する
+//    protected static $_table_name = 'users';
+//    //②テーブルの主キーを登録する
+//    protected static $_primary_key = 'id';
+//}

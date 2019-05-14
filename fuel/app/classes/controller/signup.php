@@ -78,6 +78,7 @@ class Controller_SignUp extends Controller
         $view->set('content', View::forge('auth/signup'));
         $view->set('footer', View::forge('template/footer'));
         $view->set_global('error', $error);
+        $view->set_global('title_name','新規登録');//タイトル
 
 
         return $view;

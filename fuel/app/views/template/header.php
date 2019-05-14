@@ -49,7 +49,7 @@
                     <nav class="c-nav">
                         <ul class="c-nav__menu">
                             <li class="c-nav__menu--item"><a href="" class="c-nav__menu--link">マイページ</a></li>
-                            <li class="c-nav__menu--item"><a href="" class="c-nav__menu--link">ログアウト</a></li>
+                            <li class="c-nav__menu--item"><?php echo Html::anchor('logout','ログアウト',array('class'=>'c-nav__menu--link')); ?></li>
                         </ul>
                     </nav>
                 </header>

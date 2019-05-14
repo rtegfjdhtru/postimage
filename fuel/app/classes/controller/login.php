@@ -11,9 +11,8 @@ class Controller_Login extends Controller
 
 
         $error = '';
-
         $val = Validation::forge('login');
-//        $val->add_callable('MyValidation');
+
 
         //emailバリデーション
 
@@ -28,26 +27,31 @@ class Controller_Login extends Controller
             ->add_rule('max_length', self::PASS_LENGTH_MAX);
 
 
-//            ->add_rule('unique_loginCheck');
-//        $val->set_message('unique_loginCheck', 'メールまたはパスワードが違います。');
-
-
         if (Input::method() === 'POST') {
             if ($val->run()) {
                 $formData = $val->validated();
                 $auth = Auth::instance();
+                $remember = Input::post('pass_save'); //ログイン保持チェック
+
                 //ログインに成功したらhome画面に’飛ばす’
                 if ($auth->login($formData['email'], $formData['password'])) {
+                    Log::debug('ログイン成功');
+
+                    if ($remember) {
+                        Log::debug('ログイン保持チェックあり');
+                        Auth::remember_me();
+                    }
+                    Log::debug('ホーム画面へ');
                     Response::redirect('home');
+                } else {
+                    Session::set_flash('common1', 'メールアドレスまたはパスワードが違います。');
 
                 }
-            } else {
 
+            } else {
                 $error = $val->error();
+
             }
-        } else {
-            //認証が失敗したときの処理
-            Session::set_flash('errMsg', 'メールアドレスまたはパスワードが違います。');
         }
 
 
@@ -59,6 +63,7 @@ class Controller_Login extends Controller
         $view->set('content', View::forge('login/login'));
         $view->set('footer', View::forge('template/footer'));
         $view->set_global('error', $error);
+        $view->set_global('title_name', 'ログイン');//タイトル
 
 
         return $view;
