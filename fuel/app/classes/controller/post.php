@@ -22,6 +22,13 @@ class Controller_Post extends Controller
 
 
 
+//フォームの値を変数に格納
+
+
+
+
+
+
         $view = View::forge('template/index');
         $view->set('head', View::forge('template/head'));
         $view->set('header', View::forge('template/header'));

@@ -25,17 +25,17 @@ return array(
      */
 
     // if true, the $_FILES array will be processed when the class is loaded
-    'auto_process'		=> true,
+    'auto_process'		=> false,
 
     /**
      * file validation settings
      */
 
     // maximum size of the uploaded file in bytes. 0 = no maximum
-    'max_size'			=> 200000,
+    'max_size'			=> 0,
 
     // list of file extensions that a user is allowed to upload
-    'ext_whitelist'		=> array(),
+    'ext_whitelist'		=> array('img', 'jpg', 'jpeg', 'gif', 'png'),
 
     // list of file extensions that a user is NOT allowed to upload
     'ext_blacklist'		=> array(),
@@ -48,7 +48,7 @@ return array(
     'type_blacklist'	=> array(),
 
     // list of file mime-types that a user is allowed to upload
-    'mime_whitelist'	=> array('jpg','jpeg','gif','png'),
+    'mime_whitelist'	=> array(),
 
     // list of file mime-types that a user is NOT allowed to upload
     'mime_blacklist'	=> array(),
@@ -67,7 +67,7 @@ return array(
     'extension'			=> '',
 
     // default path the uploaded files will be saved to
-    'path'				=> 'upload',
+    'path'				=> DOCROOT . '/assets/upload/',
 
     // create the path if it doesn't exist
     'create_path'		=> true,
@@ -76,7 +76,7 @@ return array(
     'path_chmod'		=> 0777,
 
     // permissions to be set on the uploaded file after being saved
-    'file_chmod'		=> 0666,
+    'file_chmod'		=> 0644,
 
     // if true, add a number suffix to the file if the file already exists
     'auto_rename'		=> true,

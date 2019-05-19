@@ -14,39 +14,44 @@ class Controller_Purof extends Controller
             //ログインしているのなら
             $data = array();
             $data['user_id'] = Arr::get(Auth::get_user_id(), 1); //ユーザIDを取得
+            $user_data = Model_Users::purof_getUser($data['user_id']);//現在ログイン中のユーザーの情報
         }
-
-        $user_data = Model_Users::purof_getUser($data['user_id']);//現在ログイン中のユーザーの情報
 
 
 
 if(Input::method() === 'POST') {
 
 //フォームの値を変数に格納
-//画像のバリデーション
 
-    $config = array(
-        'path' => DOCROOT . 'files'. DS,
-        'ext_whitelist' => array('jpg','jpeg','gif','png'),
-    );
-    Upload::process($config);
-    if(Upload::is_valid()){ //検証に成功した場合
+
+
+    Upload::process();
+
+    if (Upload::is_valid()) { //検証に成功した場合
         Upload::save(); //ファイルを保存する
-        $files = Upload::get_files(); //ファイル情報を取得する
+        
+
+        Log::debug('アップロードできました');
+
+        $formData = array();
+        $formData['nickname'] = Input::post('nickname');
+        $formData['message'] = Input::post('self--text');
+        foreach (Upload::get_files() as $files) {
+            $formData['img'] = $files['saved_as'];
+
+
+            Purof::purof_results($formData['nickname'], $formData['message'], $formData['img'], $data['user_id']);
+            Response::redirect('home'); //投稿一覧ページへリダイレクト
+        }
+
+    }else{
+        Log::debug('アップロードできません');
     }
 
-    $formData = array();
-    $formData['nickname'] = Input::post('nickname');
-    $formData['message'] = Input::post('self--text');
-    $formData['img'] = Input::post('img');
 
 
 
-
-    Purof::purof_results($formData['nickname'], $formData['message'], $formData['img'],$data['user_id']);
-    Response::redirect('post'); //投稿一覧ページへリダイレクト
 }
-
 
         $view = View::forge('template/index');
         $view->set('head', View::forge('template/head'));
@@ -56,6 +61,7 @@ if(Input::method() === 'POST') {
         $view->set('footer', View::forge('template/footer'));
         $view->set_global('title_name', 'マイページ');//タイトル
         $view->set_global('user_data',$user_data);//DBのユーザ情報をビューに
+
 
         //テンプレートビューの中でさらに読み込んだビューの中にある変数へ値を渡したい場合はset_globalを使う。
         //テンプレートビューの中で使う変数へ値を渡すだけならsetでいい。

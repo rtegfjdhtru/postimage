@@ -13,7 +13,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-8 col-md-6">
-                    <form action="" method="post" class="p-purof">
+                    <form action="" method="post" class="p-purof" enctype="multipart/form-data">
                         <input type="text" name="name" placeholder="タイトル" class="p-purof__text">
                         <input type="text" name="self--text" placeholder="説明" class="p-purof__text">
                         <!-- 画像プレビュー-->
